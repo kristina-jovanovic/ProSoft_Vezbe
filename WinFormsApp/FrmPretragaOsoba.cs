@@ -18,21 +18,24 @@ namespace WinFormsApp
             Id = 1,
             ImeIPrezime = "Pera Peric",
             DatumRodjenja = new DateTime(1999,2,2),
-            Pol = Pol.Muski
+            Pol = Pol.Muski,
+            Grad = new Grad(11000, "Beograd")
         },
         new Osoba
         {
             Id = 2,
             ImeIPrezime = "Zika Zikic",
             DatumRodjenja = new DateTime(2005,12,23),
-            Pol = Pol.Muski
+            Pol = Pol.Muski,
+            Grad = new Grad(21000, "NS")
         },
         new Osoba
         {
             Id = 3,
             ImeIPrezime = "Ana Anic",
             DatumRodjenja = new DateTime(2008,1,1),
-            Pol = Pol.Zenski
+            Pol = Pol.Zenski,
+            Grad = new Grad(21000, "NS")
         }
         };
         public FrmPretragaOsoba()
@@ -41,6 +44,7 @@ namespace WinFormsApp
             dgvOsobe.DataSource = new BindingList<Osoba>(osobe);
 
             dgvOsobe.Columns["Id"].Visible = false;
+            dgvOsobe.Columns["Grad"].Visible = false;
 
 
         }
