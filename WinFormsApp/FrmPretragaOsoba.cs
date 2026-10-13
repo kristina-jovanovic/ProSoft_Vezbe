@@ -54,7 +54,10 @@ namespace WinFormsApp
             }
 
             Osoba o = (Osoba)dgvOsobe.SelectedRows[0].DataBoundItem;
-            MessageBox.Show($"Odabrali ste osobu {o}");
+            
+            Form1 frm1 = new Form1(o);
+            frm1.ShowDialog();
+
         }
 
         private void txtKriterijumPretrage_TextChanged(object sender, EventArgs e)

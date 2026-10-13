@@ -4,10 +4,29 @@ namespace WinFormsApp
 {
     public partial class Form1 : Form
     {
+        private readonly Osoba o;
+
         public Form1()
         {
             InitializeComponent();
             SetComboBox();
+        }
+
+        public Form1(Osoba o)
+        {
+            this.o = o;
+            InitializeComponent();
+            SetComboBox();
+            PopuniPodatke();
+        }
+
+        private void PopuniPodatke()
+        {
+            txtIme.Text = o.ImeIPrezime;
+            txtDatumRodj.Text = o.DatumRodjenja.ToString("dd.MM.yyyy.");
+            cbPol.SelectedItem = o.Pol.ToString();
+            monthCalendar1.SelectionStart = o.DatumRodjenja;
+            monthCalendar1.MaxSelectionCount = 1;
         }
 
         private void SetComboBox()
