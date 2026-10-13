@@ -64,6 +64,7 @@
             pretragaOsobaToolStripMenuItem.Name = "pretragaOsobaToolStripMenuItem";
             pretragaOsobaToolStripMenuItem.Size = new Size(224, 26);
             pretragaOsobaToolStripMenuItem.Text = "Pretraga osoba";
+            pretragaOsobaToolStripMenuItem.Click += pretragaOsobaToolStripMenuItem_Click;
             // 
             // FrmGlavna
             // 

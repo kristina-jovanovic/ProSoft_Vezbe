@@ -20,5 +20,11 @@ namespace WinFormsApp
             Form1 frm = new Form1();
             frm.ShowDialog();
         }
+
+        private void pretragaOsobaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPretragaOsoba frmPretragaOsoba = new FrmPretragaOsoba();
+            frmPretragaOsoba.ShowDialog();
+        }
     }
 }
