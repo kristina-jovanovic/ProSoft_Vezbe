@@ -1,3 +1,5 @@
+using Domain;
+
 namespace WinFormsApp
 {
     public partial class Form1 : Form
@@ -10,8 +12,7 @@ namespace WinFormsApp
 
         private void SetComboBox()
         {
-            List<string> polovi = new List<string> { "Muski", "Zenski", "Drugo" };
-            //DOMACI: napraviti enum Pol { Muski, Zenski, Drugo } i koristiti ga umesto stringova
+            List<string> polovi = Enum.GetNames<Pol>().ToList();
             cbPol.DataSource = polovi;
             cbPol.SelectedIndex = -1; // Na pocetku nije setovano ni na jedan pol (prazno je)
         }
@@ -23,12 +24,15 @@ namespace WinFormsApp
             DateTime datumRodjenja = DateTime.MinValue;
             DateTime.TryParseExact(txtDatumRodj.Text, "dd.MM.yyyy", null, System.Globalization.DateTimeStyles.None, out datumRodjenja);
 
-            DateTime datumRodjenja1 = monthCalendar1.SelectionStart; // Koristimo MonthCalendar za odabir datuma
+            DateTime datumRodjenja1 = monthCalendar1.SelectionStart; 
             string pol = cbPol.SelectedItem?.ToString() ?? "Nije odabrano";
 
-            //DOMACI: napraviti objekat klase Person, postaviti vrednosti property-ja i ispisati u MessageBox-u
-
-            //MessageBox.Show($"Osoba: {ime}, rodjena {datumRodjenja}, pol: {pol}");
+            Osoba o = new Osoba
+            {
+                ImeIPrezime = ime,
+                DatumRodjenja = datumRodjenja,
+                Pol = Enum.Parse<Pol>(pol)
+            };
             MessageBox.Show($"Osoba: {ime}, rodjena {datumRodjenja1}, pol: {pol}");
         }
     }
