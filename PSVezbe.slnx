@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="ConsoleApp/ConsoleApp.csproj" />
+  <Project Path="DbBroker/DbBroker.csproj" Id="6df314ae-9eb0-4340-b8ea-c1848617e18a" />
   <Project Path="Domain/Domain.csproj" />
   <Project Path="WinFormsApp/WinFormsApp.csproj" />
 </Solution>
