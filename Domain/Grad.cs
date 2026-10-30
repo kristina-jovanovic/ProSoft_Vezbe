@@ -26,5 +26,10 @@
         {
             return HashCode.Combine(Ptt, Naziv);
         }
+
+        public override string? ToString()
+        {
+            return $"{Ptt}: {Naziv}";
+        }
     }
 }
