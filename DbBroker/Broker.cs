@@ -6,7 +6,7 @@ namespace DbBroker
 {
     public class Broker
     {
-        private static SqlConnection konekcija = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ps_2026/27;Integrated Security=True;");
+        private static SqlConnection konekcija = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ps_2026_27;Integrated Security=True;");
 
         public static void OtvoriKonekciju()
         {
