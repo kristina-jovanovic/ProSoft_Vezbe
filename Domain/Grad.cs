@@ -31,5 +31,9 @@
         {
             return $"{Ptt}: {Naziv}";
         }
+
+        //public Grad Self { get { return this; } }
+        //public Grad Self { get => this; }
+        public Grad Self => this;
     }
 }

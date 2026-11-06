@@ -32,6 +32,8 @@
             osobeToolStripMenuItem = new ToolStripMenuItem();
             kreirajOsobuToolStripMenuItem = new ToolStripMenuItem();
             pretragaOsobaToolStripMenuItem = new ToolStripMenuItem();
+            dodajOsobeToolStripMenuItem = new ToolStripMenuItem();
+            izmeniOsobeToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -41,38 +43,54 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { osobeToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 28);
+            menuStrip1.Padding = new Padding(5, 2, 0, 2);
+            menuStrip1.Size = new Size(700, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
             // osobeToolStripMenuItem
             // 
-            osobeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { kreirajOsobuToolStripMenuItem, pretragaOsobaToolStripMenuItem });
+            osobeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { kreirajOsobuToolStripMenuItem, pretragaOsobaToolStripMenuItem, dodajOsobeToolStripMenuItem, izmeniOsobeToolStripMenuItem });
             osobeToolStripMenuItem.Name = "osobeToolStripMenuItem";
-            osobeToolStripMenuItem.Size = new Size(66, 24);
+            osobeToolStripMenuItem.Size = new Size(53, 20);
             osobeToolStripMenuItem.Text = "Osobe";
             // 
             // kreirajOsobuToolStripMenuItem
             // 
             kreirajOsobuToolStripMenuItem.Name = "kreirajOsobuToolStripMenuItem";
-            kreirajOsobuToolStripMenuItem.Size = new Size(224, 26);
+            kreirajOsobuToolStripMenuItem.Size = new Size(180, 22);
             kreirajOsobuToolStripMenuItem.Text = "Kreiraj osobu";
             kreirajOsobuToolStripMenuItem.Click += kreirajOsobuToolStripMenuItem_Click;
             // 
             // pretragaOsobaToolStripMenuItem
             // 
             pretragaOsobaToolStripMenuItem.Name = "pretragaOsobaToolStripMenuItem";
-            pretragaOsobaToolStripMenuItem.Size = new Size(224, 26);
+            pretragaOsobaToolStripMenuItem.Size = new Size(180, 22);
             pretragaOsobaToolStripMenuItem.Text = "Pretraga osoba";
             pretragaOsobaToolStripMenuItem.Click += pretragaOsobaToolStripMenuItem_Click;
             // 
+            // dodajOsobeToolStripMenuItem
+            // 
+            dodajOsobeToolStripMenuItem.Name = "dodajOsobeToolStripMenuItem";
+            dodajOsobeToolStripMenuItem.Size = new Size(180, 22);
+            dodajOsobeToolStripMenuItem.Text = "Dodaj osobe";
+            dodajOsobeToolStripMenuItem.Click += dodajOsobeToolStripMenuItem_Click;
+            // 
+            // izmeniOsobeToolStripMenuItem
+            // 
+            izmeniOsobeToolStripMenuItem.Name = "izmeniOsobeToolStripMenuItem";
+            izmeniOsobeToolStripMenuItem.Size = new Size(180, 22);
+            izmeniOsobeToolStripMenuItem.Text = "Izmeni osobe";
+            izmeniOsobeToolStripMenuItem.Click += izmeniOsobeToolStripMenuItem_Click;
+            // 
             // FrmGlavna
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmGlavna";
             Text = "FrmGlavna";
             menuStrip1.ResumeLayout(false);
@@ -87,5 +105,7 @@
         private ToolStripMenuItem osobeToolStripMenuItem;
         private ToolStripMenuItem kreirajOsobuToolStripMenuItem;
         private ToolStripMenuItem pretragaOsobaToolStripMenuItem;
+        private ToolStripMenuItem dodajOsobeToolStripMenuItem;
+        private ToolStripMenuItem izmeniOsobeToolStripMenuItem;
     }
 }

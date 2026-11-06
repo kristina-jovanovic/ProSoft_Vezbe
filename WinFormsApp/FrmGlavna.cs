@@ -26,5 +26,17 @@ namespace WinFormsApp
             FrmPretragaOsoba frmPretragaOsoba = new FrmPretragaOsoba();
             frmPretragaOsoba.ShowDialog();
         }
+
+        private void dodajOsobeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmDodajOsobe osobe = new FrmDodajOsobe();
+            osobe.ShowDialog();
+        }
+
+        private void izmeniOsobeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmIzmeniOsobe izmena = new FrmIzmeniOsobe();
+            izmena.ShowDialog();
+        }
     }
 }
