@@ -1,26 +1,27 @@
 ﻿using System.Diagnostics;
 using Domain;
+using Konfiguracija;
 using Microsoft.Data.SqlClient;
 
 namespace DbBroker
 {
     public class Broker
     {
-        private static SqlConnection konekcija = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ps_2026_27;Integrated Security=True;");
+        private SqlConnection konekcija = new SqlConnection(Podaci.UcitajPodatke().KonekcioniString);
 
-        public static void OtvoriKonekciju()
+        public void OtvoriKonekciju()
         {
             konekcija.Open();
             Console.WriteLine("Konekcija otvorena.");
         }
 
-        public static void ZatvoriKonekciju()
+        public void ZatvoriKonekciju()
         {
             konekcija.Close();
             Console.WriteLine("Konekcija zatvorena.");
         }
 
-        public static int UbaciOsobu(Osoba o)
+        public int UbaciOsobu(Osoba o)
         {
             string upit = "INSERT INTO Osoba (ImeIPrezime, DatumRodjenja, Pol, Grad) " +
                 "OUTPUT INSERTED.Id " +
@@ -41,7 +42,7 @@ namespace DbBroker
             }
         }
 
-        public static List<Osoba> VratiSveOsobe()
+        public List<Osoba> VratiSveOsobe()
         {
             List<Osoba> osobe = new List<Osoba>();
             string upit = "SELECT o.Id, o.ImeIPrezime, o.DatumRodjenja, o.Pol, g.Ptt, g.Naziv FROM Osoba o JOIN Grad g ON o.Grad = g.Ptt";
@@ -68,7 +69,7 @@ namespace DbBroker
 
         ////////// VEZBE 05
 
-        public static List<Grad> VratiSveGradove()
+        public List<Grad> VratiSveGradove()
         {
             List<Grad> gradovi = new List<Grad>();
             string upit = "SELECT * FROM Grad";
@@ -86,7 +87,7 @@ namespace DbBroker
             return gradovi;
         }
 
-        public static void IzmeniGrad(Grad grad)
+        public void IzmeniGrad(Grad grad)
         {
             string upit = "UPDATE Grad SET Naziv = @Naziv WHERE Ptt = @Ptt";
             using (SqlCommand cmd = new SqlCommand(upit, konekcija, transakcija))
@@ -98,7 +99,7 @@ namespace DbBroker
             }
         }
 
-        public static void ObrisiOsobu(int id)
+        public void ObrisiOsobu(int id)
         {
             string upit = "DELETE FROM Osoba WHERE Id = @Id";
             using (SqlCommand cmd = new SqlCommand(upit, konekcija, transakcija))
@@ -113,22 +114,22 @@ namespace DbBroker
         //TRANSAKCIJE 
         //NAPOMENA: sada je potrebno u metodama prilikom kreiranja SqlCommand objekta proslediti i transakciju
 
-        private static SqlTransaction transakcija;
+        private SqlTransaction transakcija;
 
 
-        public static void ZapocniTransakciju()
+        public void ZapocniTransakciju()
         {
             transakcija = konekcija.BeginTransaction();
             Console.WriteLine("Transakcija započeta.");
         }
 
-        public static void Commit()
+        public void Commit()
         {
             transakcija.Commit();
             Console.WriteLine("Transakcija potvrđena.");
         }
 
-        public static void Rollback()
+        public void Rollback()
         {
             transakcija.Rollback();
             Console.WriteLine("Transakcija poništena.");

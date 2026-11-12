@@ -23,20 +23,23 @@ namespace WinFormsApp
         public FrmIzmeniOsobe()
         {
             InitializeComponent();
-            Broker.OtvoriKonekciju();
-            noveOsobe = new BindingList<Osoba>(Broker.VratiSveOsobe());
+            //Broker.OtvoriKonekciju();
+            noveOsobe = new BindingList<Osoba>(Kontroler.Instance.VratiSveOsobe());
             dgvOsobe.DataSource = noveOsobe;
 
             dgvOsobe.Columns["Id"].Visible = false;
             dgvOsobe.Columns["Grad"].Visible = false;
             dgvOsobe.Columns["NazivGrada"].Visible = false;
             dgvOsobe.Columns["Pol"].Visible = false;
+            dgvOsobe.Columns["TableName"].Visible = false;
+            dgvOsobe.Columns["Values"].Visible = false;
+            dgvOsobe.Columns["Join"].Visible = false;
 
             DataGridViewComboBoxColumn gradCol = new DataGridViewComboBoxColumn();
             gradCol.DataPropertyName = "Grad"; //property Osobe
 
-            gradCol.DataSource = Broker.VratiSveGradove();
-            Broker.ZatvoriKonekciju();
+            gradCol.DataSource = Kontroler.Instance.VratiSveGradove(); 
+            //Broker.ZatvoriKonekciju();
             gradCol.DisplayMember = "Naziv"; //prop Grada koji ce biti prikazan u cmb
             gradCol.ValueMember = "Self"; //prop Grada koji ce cmb vratiti
             gradCol.HeaderText = "Izaberite grad:";

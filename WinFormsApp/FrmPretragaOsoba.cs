@@ -68,6 +68,7 @@ namespace WinFormsApp
         {
             string kriterijum = txtKriterijumPretrage.Text;
             var pretrazeneOsobe = osobe.Where(o => o.ImeIPrezime.Contains(kriterijum, StringComparison.OrdinalIgnoreCase) || o.DatumRodjenja.ToString().Contains(kriterijum, StringComparison.OrdinalIgnoreCase) || o.Pol.ToString().Contains(kriterijum, StringComparison.OrdinalIgnoreCase)).ToList();
+            //u seminarskim radovima pretraga mora da se radi na nivou baze, a ne na nivou kolekcije u memoriji
             dgvOsobe.DataSource = new BindingList<Osoba>(pretrazeneOsobe);
         }
     }

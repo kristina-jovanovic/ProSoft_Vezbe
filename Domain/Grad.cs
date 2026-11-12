@@ -1,10 +1,12 @@
-﻿namespace Domain
+﻿using Microsoft.Data.SqlClient;
+
+namespace Domain
 {
-    public class Grad
+    public class Grad : IEntity
     {
         public Grad()
         {
-            
+
         }
         public Grad(int ptt, string naziv)
         {
@@ -32,8 +34,29 @@
             return $"{Ptt}: {Naziv}";
         }
 
+        public List<IEntity> GetReaderList(SqlDataReader reader)
+        {
+            List<IEntity> gradovi = new List<IEntity>();
+            while (reader.Read())
+            {
+                Grad g = new Grad
+                {
+                    Ptt = (int)reader["ptt"],
+                    Naziv = (string)reader["naziv"]
+                };
+                gradovi.Add(g);
+            }
+            return gradovi;
+        }
+
         //public Grad Self { get { return this; } }
         //public Grad Self { get => this; }
         public Grad Self => this;
+
+        public string TableName => "Grad";
+
+        public string Values => $"{Ptt}, '{Naziv}'";
+
+        public string Join => "";
     }
 }

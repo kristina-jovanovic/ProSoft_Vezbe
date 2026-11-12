@@ -22,12 +22,15 @@ namespace WinFormsApp
             dgvOsobe.Columns["Grad"].Visible = false;
             dgvOsobe.Columns["NazivGrada"].Visible = false;
             dgvOsobe.Columns["Pol"].Visible = false;
+            dgvOsobe.Columns["TableName"].Visible = false;
+            dgvOsobe.Columns["Values"].Visible = false;
+            dgvOsobe.Columns["Join"].Visible = false;
 
             DataGridViewComboBoxColumn gradCol = new DataGridViewComboBoxColumn();
             gradCol.DataPropertyName = "Grad"; //property Osobe
-            Broker.OtvoriKonekciju();
-            gradCol.DataSource = Broker.VratiSveGradove();
-            Broker.ZatvoriKonekciju();
+            //Broker.OtvoriKonekciju();
+            gradCol.DataSource = Kontroler.Instance.VratiSveGradove();
+            //Broker.ZatvoriKonekciju();
             gradCol.DisplayMember = "Naziv"; //prop Grada koji ce biti prikazan u cmb
             gradCol.ValueMember = "Self"; //prop Grada koji ce cmb vratiti
             gradCol.HeaderText = "Izaberite grad:";
@@ -60,28 +63,7 @@ namespace WinFormsApp
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            Broker.OtvoriKonekciju();
-            Broker.ZapocniTransakciju();
-            try
-            {
-              
-                foreach (var o in noveOsobe)
-                {
-                    Broker.UbaciOsobu(o);
-                }
-                Broker.Commit();
-                MessageBox.Show("Osobe su uspesno sacuvane!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Greska: "+ex.Message);
-                Broker.Rollback();
-            }
-            finally
-            {
-                Broker.ZatvoriKonekciju();
-            }
-
+            Kontroler.Instance.UbaciViseOsoba(noveOsobe.ToList());
         }
     }
 }
